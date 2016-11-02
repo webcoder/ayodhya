@@ -1,0 +1,89 @@
+{
+  "name": "Folder Structure",
+  "version": "1.0",
+  "folders": {
+    "dist": {
+      "dev": {
+        "_files": ["index.html"],
+        "css":{
+          "_files": ["style.css"],
+          "assets":{
+            "backgrounds": "",
+            "fonts": "",
+            "icons": ""
+          }
+        },
+        "images": {
+          "global": ""
+        },
+        "js": {
+          "_files": ["main.js"],
+          "components": "",
+          "global": "",
+          "libs": "",
+          "plugins": "",
+          "sections": ""
+        },
+        "sections": ""
+      },
+      "prod": {
+        "_files": ["index.html"],
+        "css":{
+          "_files": ["style.min.css"],
+          "assets":{
+            "backgrounds": "",
+            "fonts": "",
+            "icons": ""
+          }
+        },
+        "images": {
+          "global": ""
+        },
+        "js": {
+          "_files": ["main.js"],
+          "components": "",
+          "global": "",
+          "libs": "",
+          "plugins": "",
+          "sections": ""
+        },
+        "sections": ""
+      }
+    },
+    "src": {
+      "css": {
+        "_files": ["style.less"],
+        "config": {
+          "_files": ["_variables.less"]
+        },
+        "base": {
+          "_files": ["_sections.less","_grouping.less","_form.less","_text.less","_table.less"]
+        },
+        "layout":{
+          "_files": ["_grid.less"]
+        },
+        "sections": "",
+        "components": "",
+        "theme": {
+          "_files": ["_header.less","_footer.less"]
+        }
+      },
+      "html":{
+        "_files": ["index.pug"],
+        "config": {
+          "_files": ["_variables.pug"]
+        },
+        "mixins": "",
+        "sections": "",
+        "template": {
+          "_files": ["_footer.pug","_head.pug","_header.pug"]
+        }
+      },
+      "js": ""
+    }
+  },
+  "config_js": {
+    "js/global/global.min.js": ["js/global/global.js","js/libs/_lib.js"],
+    "js/main.js": ["js/global/_one.js","js/global/_two.js"]
+  }
+}
