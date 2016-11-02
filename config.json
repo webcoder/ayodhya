@@ -4,9 +4,9 @@
   "folders": {
     "dist": {
       "dev": {
-        "_files": ["index.html"],
+        "_files": [{"name": "index.html"}],
         "css":{
-          "_files": ["style.css"],
+          "_files": [{"name": "style.css"}],
           "assets":{
             "backgrounds": "",
             "fonts": "",
@@ -17,7 +17,7 @@
           "global": ""
         },
         "js": {
-          "_files": ["main.js"],
+          "_files": [{"name": "main.js"}],
           "components": "",
           "global": "",
           "libs": "",
@@ -27,9 +27,9 @@
         "sections": ""
       },
       "prod": {
-        "_files": ["index.html"],
+        "_files": [{"name": "index.html"}],
         "css":{
-          "_files": ["style.min.css"],
+          "_files": [{"name": "style.min.css"}],
           "assets":{
             "backgrounds": "",
             "fonts": "",
@@ -40,7 +40,7 @@
           "global": ""
         },
         "js": {
-          "_files": ["main.js"],
+          "_files": [{"name": "main.js"}],
           "components": "",
           "global": "",
           "libs": "",
@@ -52,38 +52,34 @@
     },
     "src": {
       "css": {
-        "_files": ["style.less"],
+        "_files": [{"name": "style.less", "template": ""}],
         "config": {
-          "_files": ["_variables.less"]
+          "_files": [{"name": "_variables.less", "template": ""}]
         },
         "base": {
-          "_files": ["_sections.less","_grouping.less","_form.less","_text.less","_table.less"]
+          "_files": [{"name": "_sections.less", "template": ""},{"name": "_grouping.less", "template": ""},{"name": "_form.less", "template": ""},{"name": "_text.less", "template": ""},{"name": "_table.less", "template": ""}]
         },
         "layout":{
-          "_files": ["_grid.less"]
+          "_files": [{"name": "_grid.less", "template": ""}]
         },
         "sections": "",
         "components": "",
         "theme": {
-          "_files": ["_header.less","_footer.less"]
+          "_files": [{"name": "_header.less", "template": ""},{"name": "_footer.less", "template": ""}]
         }
       },
       "html":{
-        "_files": ["index.pug"],
+        "_files": [{"name": "index.pug", "template": ""}],
         "config": {
-          "_files": ["_variables.pug"]
+          "_files": [{"name": "_variables.pug", "template": ""}]
         },
         "mixins": "",
         "sections": "",
         "template": {
-          "_files": ["_footer.pug","_head.pug","_header.pug"]
+          "_files": [{"name": "_footer.pug", "template": ""},{"name": "_head.pug", "template": ""},{"name": "_header.pug", "template": ""}]
         }
       },
       "js": ""
     }
-  },
-  "config_js": {
-    "js/global/global.min.js": ["js/global/global.js","js/libs/_lib.js"],
-    "js/main.js": ["js/global/_one.js","js/global/_two.js"]
   }
 }
