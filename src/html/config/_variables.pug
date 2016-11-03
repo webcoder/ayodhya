@@ -1,0 +1,58 @@
+//-
+  Perfiles posibles para llamar dentro de las páginas los archivos
+  JS y CSS
+- var CONST_DEV_PROFILE = 'dev'
+- var CONST_PROD_PROFILE = 'prod'
+//-
+  Nivel de carpeta, dependiendo donde se use
+- var global_path = ''
+//-
+  Perfil activo por default para llamar los JS y CSS
+- var current_profile = 'prod'
+//-
+  Almacena atributos globales del sitio
+  Ejemplo: Título
+- var site = {}
+- site['lang'] = 'es-mx'
+- site['title'] = 'Estandares & Normas para el proceso Front End - '
+- site['base'] = {}
+- site['base']['dev'] = 'http://127.0.0.1/dist/dev/'
+- site['base']['prod'] = 'http://127.0.0.1/dist/prod/'
+//-
+  En caso de que se requieran fuentes almacenadas en servidores externos
+  Ejemplo: Google Fonts
+- var fonts = {}
+//-Styles
+- var styles = {}
+- styles['base'] = 'css/'
+- styles['global'] = {}
+- styles['global']['dev'] = styles.base + 'style.css'
+- styles['global']['prod'] = styles.base + 'style.min.css'
+//-Images
+- var images = {}
+- images['base'] = 'images/'
+//-
+  Ejemplo de la distribución de carpetas de imágenes
+  nombre-del-sitio-nombre-de-la-seccion-banner-1.jpg
+  - images['logos'] = images.base + 'logos/'
+  - images['banners'] = images.base + 'banners/'
+  - images['carousel'] = images.base + 'carousel/'
+//-Scripts
+- var scripts = {}
+- scripts['base'] = 'js/'
+- scripts['global'] = scripts.base + 'global/'
+- scripts['libs'] = scripts.base + 'libs/'
+- scripts['plugins'] = scripts.base + 'plugins/'
+- scripts['controllers'] = scripts.base + 'controllers/'
+//
+  - Ejemplo para la estructura para el resto de módulos JS
+  - scripts['utils'] = scripts.base + 'utils/'
+  - scripts['core'] = scripts.base + 'core/'
+  - scripts['models'] = scripts.base + 'models/'
+  - scripts['ui'] = scripts.base + 'ui/'
+  - scripts['network'] = scripts.base + 'network/'
+  - scripts['view'] = scripts.base + 'view/'
+//-Url's
+- var url = {};
+//-Ejemplo para configura las variables url del sitio
+  - url['section'] = '/section/example.html';
