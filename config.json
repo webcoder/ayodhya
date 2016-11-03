@@ -40,7 +40,7 @@
           "global": ""
         },
         "js": {
-          "_files": [{"name": "main.js"}],
+          "_files": [{"name": "main.min.js"}],
           "components": "",
           "global": "",
           "libs": "",
