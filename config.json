@@ -57,7 +57,7 @@
           "_files": [{"name": "_variables.less", "template": ""}]
         },
         "base": {
-          "_files": [{"name": "_sections.less", "template": ""},{"name": "_grouping.less", "template": ""},{"name": "_form.less", "template": ""},{"name": "_text.less", "template": ""},{"name": "_table.less", "template": ""}]
+          "_files": [{"name": "_document.less", "template": ""}, {"name": "_embedded.less", "template": ""}, {"name": "_sections.less", "template": ""},{"name": "_grouping.less", "template": ""},{"name": "_forms.less", "template": ""},{"name": "_text.less", "template": ""},{"name": "_table.less", "template": ""}, {"name": "_interactive.less", "template": ""}, {"name": "_links.less", "template": ""}, {"name": "_scripting.less", "template": ""}]
         },
         "layout":{
           "_files": [{"name": "_grid.less", "template": ""}]
