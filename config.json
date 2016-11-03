@@ -69,17 +69,22 @@
         }
       },
       "html":{
-        "_files": [{"name": "index.pug", "template": ""}],
+        "_files": [{"name": "index.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/index.pug"}],
         "config": {
-          "_files": [{"name": "_variables.pug", "template": ""}]
+          "_files": [{"name": "_variables.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/config/_variables.pug"}]
         },
         "mixins": "",
         "sections": "",
         "template": {
-          "_files": [{"name": "_footer.pug", "template": ""},{"name": "_head.pug", "template": ""},{"name": "_header.pug", "template": ""}]
+          "_files": [{"name": "_footer.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/template/_footer.pug"},{"name": "_head.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/template/_head.pug"},{"name": "_header.pug", "template": ""}]
         }
       },
-      "js": ""
+      "js": {
+        "global": "",
+        "libs": "",
+        "plugins": "",
+        "controllers": ""
+      }
     }
   }
 }
