@@ -1,0 +1,29 @@
+//-Configuración y variables globales del proyecto
+include config/_variables
+
+//-
+  Ajustes de la configuración global para esta sección
+//- globalPath = '../'
+//-
+  Perfil para el tipo de archivo JS y CSS a incluir normal o minificado
+- current_profile = CONST_DEV_PROFILE
+//-
+  Nombre de la página
+- var page = 'Inicio'
+//-
+  - Ejemplo de como incluir CSS por pagina
+  - var section_style = {}
+  - section_style['dev'] = 'home.css'
+  - section_style['prod'] = 'home.min.css'
+//-
+  - Ejemplo como incluir los JS por pagina
+  - var section_scripts =  {}
+  - section_scripts['dev'] = [scripts.base + 'script_1.js', scripts.base + 'script_2.js']
+  - section_scripts['prod'] = [scripts.base + 'main.min.js']
+
+doctype html
+html(lang=site.lang)
+  include template/_head
+  body
+    include template/_header
+    include template/_footer
