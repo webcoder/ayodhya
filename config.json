@@ -52,7 +52,7 @@
     },
     "src": {
       "css": {
-        "_files": [{"name": "style.less", "template": ""}],
+        "_files": [{"name": "style.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/style.less"}],
         "config": {
           "_files": [{"name": "_variables.less", "template": ""}]
         },
