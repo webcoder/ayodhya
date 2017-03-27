@@ -29,6 +29,12 @@ const jshint = require('gulp-jshint');
 const browserSync = require('browser-sync').create();
 //Make synchronous web requests
 const request = require('sync-request');
+//One-way synchronization of directories with glob.
+const syncy = require('syncy');
+//Prefix CSS with Autoprefixer
+const autoprefixer = require('gulp-autoprefixer');
+//Minify PNG, JPEG, GIF and SVG images with imagemin
+const imagemin = require('gulp-imagemin');
 /*
   *@constant {string} Nombre por default de la carpeta donde se encuentran los editables
   *@global
@@ -150,7 +156,8 @@ var messages = {
     css: 'CSS listo...',
     source: 'Compilando Javascript...',
     js: 'Javascript listo...',
-    request: 'Descargando el template para el archivo...'
+    request: 'Descargando el template para el archivo...',
+    sync: 'Se han sincronizado los archivos de la carpeta...'
   },
   /*
     * @description Color y mensajes de advertencia de la aplicación
@@ -188,7 +195,17 @@ const _PATHS = {
     *@constant {string} Carpeta de los archivos listos para producción
     *@global
   */
-  PROD: 'dist/prod/'
+  PROD: 'dist/prod/',
+  /*
+    *@constant {string} Carpeta de los archivos a sincronizar de soporte del CSS
+    *@global
+  */
+  ASSETS: 'css/assets/',
+  /*
+    *@constant {string} Carpeta de las imagenes a sincronizar entre dev y prod
+    *@global
+  */
+  IMAGES: 'images/'
 };
 /*
   * @description Define los niveles de carpetas por default para los templates HTML
@@ -258,7 +275,7 @@ var _handlerMessages = function (code,type,log){
     }
     break;
   }//switch end
-};//_handlerMessages end
+  };//_handlerMessages end
 /**
   * @description Itera de manera recursiva la llave de la configuración inicial [folders]
   *
@@ -336,6 +353,8 @@ var _createStructure = function (folders){
   _handlerMessages('mkdir',_INFO_MESSAGE);
   _iterateFolders(folders);
   _getModifiedFile(_SOURCE_FOLDER);
+  _syncAssets(_PATHS.ASSETS);
+  _optimizeImages(_PATHS.IMAGES);
 };
 /**
   * @description Primera función a ejecutar por parte de la aplicación, que determina
@@ -370,13 +389,14 @@ var main = function(){
             _config_js.total = _config_js.files.length;
           }
           _getModifiedFile(_SOURCE_FOLDER);
+          _syncAssets(_PATHS.ASSETS);
+          _optimizeImages(_PATHS.IMAGES);
         }
       });
     }
 
   });
 };//main end
-
 //Ejecución de la función principal
 main ();
 /**
@@ -497,12 +517,12 @@ var _compileJS = function(data){
  * @param {object} data Configuración del archivo origen que sufrió un cambio
  */
 var _compileLess = function (data){
-
   _handlerMessages('less',_INFO_MESSAGE);
 
   gulp.src(_config_style.main)
       .pipe(plumber())
       .pipe(less())
+      .pipe(autoprefixer({remove: false, browsers: ['last 10 versions','ie 8-9']}))
       .pipe(gulp.dest(_PATHS.DEV + _config_style.base))
       .pipe( browserSync.stream() );
 
@@ -513,6 +533,7 @@ var _compileLess = function (data){
       .pipe( rename(function(path){
         path.basename += '.min';
       }))
+      .pipe(autoprefixer({remove: false, browsers: ['last 10 versions','ie 8-9']}))
       .pipe(gulp.dest(_PATHS.PROD + _config_style.base))
       .pipe( browserSync.stream() );
 
@@ -520,14 +541,15 @@ var _compileLess = function (data){
 
 };
 /**
- * [[Description]]
+ * Compila los templates basados en Pug
  * @private
- * @param {object} data [[Description]]
+ * @param {object} data Configuración del archivo origen que sufrió un cambio
  */
 var _compilePug = function (data){
 
   var prefix = data.file.substring(0,1),
       origin, dest_dev, dest_prod;
+
   //En caso de no tener prefijo
   //se compila el archivo modificado
   if ( prefix !== _FILE_PREFIX){
@@ -664,6 +686,39 @@ var _getModifiedFile = function (dir){
       _analyzeModifiedFile(path,file,total,folders,ext);
   });//
   _configServer();
+};
+/**
+ * Permite observar las modificaciones en los archivos de soporte
+ * del CSS y sincronizar las distribuciones
+ * @private
+ * @param {string} folder Path de la carpeta a observar
+ */
+var _syncAssets = function(folder){
+  var src = _PATHS.DEV + folder,
+      dest = _PATHS.PROD + folder;
+  file_system.watch(src,{recursive:true}, function(eventType, path){
+    //Sincronizar imágenes
+    syncy([src + '**'], dest,{base: src})
+    .then(() => {
+      _handlerMessages('sync',_INFO_MESSAGE,folder);
+    })
+    .catch(console.error);
+  });
+};
+/**
+ * Se encarga de observar una carpeta y optimizar las imagenes cuando
+ * ocurre un cambio y colocarla en la distribución de producción
+ * @private
+ * @param {[[Type]]} folder [[Description]]
+ */
+var _optimizeImages = function(folder){
+  var src = _PATHS.DEV + folder,
+      dest = _PATHS.PROD + folder;
+  file_system.watch(src,{recursive:true}, function(eventType, path){
+   gulp.src(src + '**')
+      .pipe(imagemin())
+      .pipe(gulp.dest(dest));
+  });
 };
 //Tarea por default del builder task (No es opcional)
 gulp.task('default');
