@@ -54,13 +54,13 @@
       "css": {
         "_files": [{"name": "style.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/style.less"}],
         "config": {
-          "_files": [{"name": "_variables.less", "template": ""}]
+          "_files": [{"name": "_variables.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/config/_variables.less"}}]
         },
         "base": {
           "_files": [{"name": "_document.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_document.less"}, {"name": "_embedded.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_embedded.less"}, {"name": "_sections.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_sections.less"},{"name": "_grouping.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_grouping.less"},{"name": "_forms.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_forms.less"},{"name": "_text.less", "template": ""},{"name": "_table.less", "template": ""}, {"name": "_interactive.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_interactive.less"}, {"name": "_links.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_links.less"}, {"name": "_scripting.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/base/_scripting.less"}]
         },
         "layout":{
-          "_files": [{"name": "_grid.less", "template": ""}]
+          "_files": [{"name": "_grid.less", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/css/layout/_grid.less"}}]
         },
         "sections": "",
         "components": "",
