@@ -647,11 +647,15 @@ var _analyzeModifiedFile = function (path,file,level,folders,ext){
  * @private
  */
 var _configServer = function (){
-  var config;
+  var config, 
+      profile = _PATHS.DEV;
   if (global_config.proxy === '' || global_config.proxy === undefined){
+    if ( global_config.profile !== undefined){
+      profile = _PATHS.PROD;
+    }
     config = {
       server: {
-        baseDir: _PATHS.DEV,
+        baseDir: profile,
         directory: true
       }
     };
@@ -662,7 +666,7 @@ var _configServer = function (){
     }
   }
   browserSync.init(config);
-  gulp.watch( _PATHS.DEV + '**/*.*').on('change', browserSync.reload);
+  gulp.watch( profile + '**/*.*').on('change', browserSync.reload);
 };
 /**
  * Observa la carpeta con los archivos base para compilar
