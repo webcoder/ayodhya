@@ -1,0 +1,243 @@
+//-Configuración y variables globales del proyecto
+include ../config/_variables
+
+//-
+  Ajustes de la configuración global para esta sección
+- global_path = '../'
+//-
+  Perfil para el tipo de archivo JS y CSS a incluir (normal o minificado)
+//- current_profile = CONST_DEV_PROFILE
+//-
+  Nombre de la página
+- var page = 'Toolkit'
+//-
+  - Ejemplo de como incluir CSS por pagina
+  - var section_style = {}
+  - section_style['dev'] = 'home.css'
+  - section_style['prod'] = 'home.min.css'
+//-
+  - Ejemplo como incluir los JS por pagina
+  - var section_scripts =  {}
+  - section_scripts['dev'] = [global_path  + scripts.base + 'script_1.js', global_path  + scripts.base + 'script_2.js']
+  - section_scripts['prod'] = [global_path  + scripts.base + 'main.min.js']
+
+doctype html
+html(lang=site.lang)
+  include ../template/_head
+  body.toolkit
+    header
+      .container
+        .row
+          .col-12
+            h1 Toolkit {Nombre del proyecto}
+    section.grid
+    .container
+      h2 Ejemplo del grid básico
+        .row
+          .col-12
+            h3 .col-12
+      .container
+        .row
+          .col-11
+            h3 .col-11
+          .col-1
+            h3 .col-1
+      .container
+        .row
+          .col-10
+            h3 .col-10
+          .col-2
+            h3 .col-2
+      .container
+        .row
+          .col-9
+            h3 .col-9
+          .col-3
+            h3 .col-3
+      .container
+        .row
+          .col-8
+            h3 .col-8
+          .col-4
+            h3 .col-4
+      .container
+        .row
+          .col-7
+            h3 .col-7
+          .col-5
+            h3 .col-5
+      .container
+        .row
+          .col-6
+            h3 .col-6
+          .col-6
+            h3 .col-6
+    
+    section.color-palette
+      .container
+        .row
+          .col-12
+            h2 Paleta de colores (por funcionalidad)
+            ul
+              li.col-2
+                div.brand-color
+                p Hexadecimal
+                p: strong @brand-color
+              li.col-2
+                div.accent-first-color
+                p Hexadecimal
+                p: strong @accent-first-color
+              li.col-2
+                div.accent-second-color
+                p Hexadecimal
+                p: strong @accent-second-color
+              li.col-2
+                div.base-color
+                p Hexadecimal
+                p: strong @base-color
+              li.col-2
+                div.text-color
+                p Hexadecimal
+                p: strong @text-color
+                
+    section.typography
+      .container
+        .row
+          h2 Tipografía
+          h3 Títulos Fuente {Nombre de la fuente} @complementary-typography
+          p Contenido Fuente {Nombre de la fuente} @main-typography
+    
+    section.ui
+      .container.buttons
+        .row
+          h2 Interfaz de usuario
+        .row
+          h3 Botones clase .btn-default
+        .row  
+          .col-3
+            a.btn-default(href="#") Link
+          .col-3
+            input.btn-default(type="submit" value="Input Submit")
+          .col-3
+            input.btn-default(type="button" value="Input Button")
+          .col-3
+            button.btn-default Button
+        .row
+          h4 Modificadores .white
+        .row.blue
+          .col-3
+            a.btn-default.white(href="#") Link
+          .col-3
+            input.btn-default.white(type="submit" value="Input Submit")
+          .col-3
+            input.btn-default.white(type="button" value="Input Button")
+          .col-3
+            button.btn-default.white Button
+    section.icons
+      .container
+        .row
+          h2 Iconos
+        .row
+          .col-2
+            p: span.icon-visas
+            p: strong .icon-visas
+          .col-2
+            p: span.icon-user
+            p: strong .icon-user
+          .col-2
+            p: span.icon-twitter
+            p: strong .icon-twitter
+         
+    sections
+      .container
+        .row
+          h2 Formularios
+        .row
+          .col-6
+            label(for="txtZipCode") Label:
+            input(id="txtZipCode" type="text" name="zipCode" value="input[type='text']")
+          .col-6
+            label(for="cboCountry") Label:
+            select(id="cboCountry" name="country")
+              option(value="") select
+              option(value="1") Valor 1
+              option(value="2" ) Valor 2
+              option(value="3") Valor 3
+        .row
+          .col-6
+            label Label
+            p: strong .radio-button
+            .radio-button
+              input(id="chkVisibleYes" name="visible" type="radio" value="")
+              label(for="chkVisibleYes") 
+                span
+                |Ejemplo de radio button
+          .col-6
+            label Label
+            p: strong .check-box
+            .check-box
+              input(id="chkTermsPrivaci" name="terms" type="checkbox" value="")
+              label(for="chkTermsPrivaci") 
+                span
+                |Ejemplo checkbox
+    section
+      .container
+        .row
+          h2 Prefijos
+        .row
+          .col-3
+            p
+              |input[type="text"]:&nbsp;
+              strong txt
+          .col-3
+            p
+              |input[type="checkbox"]:&nbsp;
+              strong chk
+          .col-3
+            p
+              |input[type="radio"]:&nbsp;
+              strong rbn
+          .col-3
+            p
+              |input[type="hidden"]:&nbsp;
+              strong hdn
+          
+          .col-3
+            p
+              |input[type="button"]:&nbsp;
+              strong btn
+          .col-3
+            p
+              |input[type="submit"]:&nbsp;
+              strong btn
+          .col-3
+            p
+              |input[type="reset"]:&nbsp;
+              strong btn
+          .col-3
+            p
+              |select:&nbsp;
+              strong cbo
+          .col-3
+            p
+              |Links:&nbsp;
+              strong lnk
+          .col-3
+            p
+              |form:&nbsp;
+              strong frm
+          
+          
+          
+          
+              
+          
+    footer
+      .container
+        .row
+          p &copy; Ingenia Front end Team
+          
+      
+              
+              
+                
