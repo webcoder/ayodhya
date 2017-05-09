@@ -77,7 +77,9 @@
           "_files": [{"name": "_variables.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/config/_variables.pug"}]
         },
         "mixins": "",
-        "sections": [{"name": "toolkit.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/sections/toolkit.pug"}],
+        "sections": {
+          "_files": [{"name": "toolkit.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/sections/toolkit.pug"}]
+        },
         "template": {
           "_files": [{"name": "_footer.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/template/_footer.pug"},{"name": "_head.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/template/_head.pug"},{"name": "_header.pug", "template": ""}]
         }
