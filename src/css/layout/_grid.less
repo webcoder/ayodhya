@@ -5,13 +5,12 @@
 
 .row{
   margin: 0 auto;
-  padding: 0 10px;
 }
 
 .row:after{
+  clear: both;
   content: '';
   display: table;
-  clear: both;
 }
 
 .middle{
@@ -64,5 +63,12 @@
   width: 16.66666667%;
 }
 .col-1{
+  float: left;
   width: 8.33333333%;
+}
+
+@media(max-width: @desktop){
+  .container{
+    padding: 0 10px;
+  }
 }
