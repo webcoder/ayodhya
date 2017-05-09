@@ -1,6 +1,7 @@
 {
   "name": "Folder Structure",
   "version": "1.0",
+  "profile": "prod",
   "folders": {
     "dist": {
       "dev": {
