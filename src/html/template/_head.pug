@@ -1,6 +1,9 @@
 head
   title #{site.title} #{page}
   meta(http-equiv="content-type" content="charset=utf-8")
+  meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+  if fonts
+    link(href=fonts rel="stylesheet")
   link(rel="stylesheet" href=global_path + styles.global[current_profile] type="text/css")
   if section_style
     link(rel="stylesheet" href=global_path + styles.base + section_style[current_profile] type="text/css")
