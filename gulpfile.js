@@ -599,7 +599,7 @@ var _compilePug = function (data){
     .pipe( plumber() )
     .pipe( pug({pretty:true}) )
     .pipe( rename(function(path){
-      path.basename = path.basename.replace('_','-');
+      path.basename = path.basename.replace(/'_'/g,'-');
     }))
     .pipe( gulp.dest(dest_dev) );
   //Generar versiones de producción
@@ -607,7 +607,7 @@ var _compilePug = function (data){
       .pipe( plumber() )
       .pipe( pug() )
       .pipe( rename(function(path){
-        path.basename = path.basename.replace('_','-');
+        path.basename = path.basename.replace(/'_'/g,'-');
       }))
       .pipe( gulp.dest( dest_prod ) );
   _handlerMessages('html',_INFO_MESSAGE);
