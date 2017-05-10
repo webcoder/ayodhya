@@ -480,22 +480,41 @@ var _compileJS = function(data){
   dest_dev = _PATHS.DEV + temp;
   //
   _handlerMessages('source',_INFO_MESSAGE);
-  console.log('********* Reporte JS Hint *********');
-  gulp.src([origin])
+  config_prod = _getRoutesJS(data.path);
+  
+  if (config_prod){ //Concantena
+    gulp.src([origin])
       .pipe( plumber() )
       .pipe(gulp.dest(dest_dev))
       .pipe(jshint())
       .pipe(jshint.reporter(stylish))
       .pipe(jslint({indent:2}))
       .pipe(jslint.reporter('stylish'));
-  config_prod = _getRoutesJS(data.path);
+    
+    gulp.src(config_prod.files)
+        .pipe(concat(config_prod.name))
+        .pipe(gulp.dest(dest_dev));
+  }
+  else{//Exporta
+    gulp.src([origin])
+      .pipe( plumber() )
+      .pipe(gulp.dest(dest_dev))
+      .pipe(jshint())
+      .pipe(jshint.reporter(stylish))
+      .pipe(jslint({indent:2}))
+      .pipe(jslint.reporter('stylish'));
+  }
+  
   if (config_prod){ //Concantena y minifica
     dest_prod = _PATHS.PROD + config_prod.dest;
-    console.log()
+    console.log(config_prod.name);
     gulp.src(config_prod.files)
       .pipe(concat(config_prod.name))
       .pipe(plumber())
       .pipe(uglify())
+      .pipe( rename(function(path){
+        path.basename += '.min';
+      }))
       .pipe(gulp.dest(dest_prod));
   }
   else{ //Minifica
