@@ -235,8 +235,7 @@ var _config_templates = {
 var _config_style = {
   base: 'css/',
   main: _SOURCE_FOLDER + 'css/style.less',
-  sections: 'sections',
-  globs: 'css/sections/**/*.less'
+  globs: 'css/*.less'
 };
 /**
   * @description Configuración base para los js de producción
@@ -536,16 +535,30 @@ var _compileJS = function(data){
  * @param {object} data Configuración del archivo origen que sufrió un cambio
  */
 var _compileLess = function (data){
+  
+  var prefix = data.file.substring(0,1),
+      origin, dest_dev, dest_prod;
+  
+  //En caso de no tener prefijo
+  //se compila el archivo modificado
+  if ( prefix !== _FILE_PREFIX){
+    origin = 'src/css/' + data.file;  
+  }
+  else{
+    origin = _SOURCE_FOLDER + _config_style.globs;
+  }
   _handlerMessages('less',_INFO_MESSAGE);
-
-  gulp.src(_config_style.main)
+  //gulp.src(_config_style.main)
+  gulp.src(origin)
       .pipe(plumber())
       .pipe(less())
       .pipe(autoprefixer({remove: false, browsers: ['last 10 versions','ie 8-9']}))
-      .pipe(gulp.dest(_PATHS.DEV + _config_style.base))
+      .pipe(gulp.dest(_PATHS.DEV + _config_style.base ))
+      //.pipe(gulp.dest(_PATHS.DEV + _config_style.base))
       .pipe( browserSync.stream() );
 
-  gulp.src(_config_style.main)
+  //gulp.src(_config_style.main)
+  gulp.src(origin)
       .pipe( plumber() )
       .pipe(less())
       .pipe(clean_css({compatibility: 'ie8'}))
@@ -553,6 +566,7 @@ var _compileLess = function (data){
         path.basename += '.min';
       }))
       .pipe(autoprefixer({remove: false, browsers: ['last 10 versions','ie 8-9']}))
+      //.pipe(gulp.dest(_PATHS.PROD + _config_style.base))
       .pipe(gulp.dest(_PATHS.PROD + _config_style.base))
       .pipe( browserSync.stream() );
 
