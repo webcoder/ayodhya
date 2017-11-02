@@ -552,6 +552,9 @@ var _compileLess = function (data){
   gulp.src(origin)
       .pipe(plumber())
       .pipe(less())
+      .pipe( rename(function(path){
+        path.basename = path.basename.replace(/_/g,'-');
+      }))
       .pipe(autoprefixer({remove: false, browsers: ['last 10 versions','ie 8-9']}))
       .pipe(gulp.dest(_PATHS.DEV + _config_style.base ))
       //.pipe(gulp.dest(_PATHS.DEV + _config_style.base))
@@ -564,6 +567,7 @@ var _compileLess = function (data){
       .pipe(clean_css({compatibility: 'ie8'}))
       .pipe( rename(function(path){
         path.basename += '.min';
+        path.basename = path.basename.replace(/_/g,'-');
       }))
       .pipe(autoprefixer({remove: false, browsers: ['last 10 versions','ie 8-9']}))
       //.pipe(gulp.dest(_PATHS.PROD + _config_style.base))
