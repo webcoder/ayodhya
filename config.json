@@ -76,6 +76,7 @@
         "config": {
           "_files": [{"name": "_variables.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/config/_variables.pug"}]
         },
+        "components": [{"name": "_scripts.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/components/_scripts.pug"}], 
         "mixins": "",
         "sections": {
           "_files": [{"name": "toolkit.pug", "template": "https://raw.githubusercontent.com/webcoder/ayodhya/master/src/html/sections/toolkit.pug"}]

@@ -18,8 +18,8 @@ include config/_variables
 //-
   - Ejemplo como incluir los JS por pagina
   - var section_scripts =  {}
-  - section_scripts['dev'] = [scripts.base + 'script_1.js', scripts.base + 'script_2.js']
-  - section_scripts['prod'] = [scripts.base + 'main.min.js']
+  - section_scripts['prod'].push(global_path  + scripts.controllers + 'city.min.js')
+  - section_scripts['dev'].push(global_path  + scripts.controllers + 'city.js')
 
 - var section_scripts =  {} 
 - section_scripts['prod'] = []
@@ -28,8 +28,11 @@ include config/_variables
 include components/_scripts   
 
 if concatenate
+  //-PROD
+  //-DEV
 else
-
+  //-PROD
+  //-DEV
 doctype html
 html(lang=site.lang)
   include template/_head
