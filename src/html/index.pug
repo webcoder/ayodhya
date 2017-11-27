@@ -21,6 +21,15 @@ include config/_variables
   - section_scripts['dev'] = [scripts.base + 'script_1.js', scripts.base + 'script_2.js']
   - section_scripts['prod'] = [scripts.base + 'main.min.js']
 
+- var section_scripts =  {} 
+- section_scripts['prod'] = []
+- section_scripts['dev'] = []
+//-
+include components/_scripts   
+
+if concatenate
+else
+
 doctype html
 html(lang=site.lang)
   include template/_head
